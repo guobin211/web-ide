@@ -1,0 +1,8 @@
+{
+  "name": "workers",
+  "version": "1.0.0",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.14.8",
+    "lodash": "^4.17.20"
+  }
+}

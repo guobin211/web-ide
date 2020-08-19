@@ -1,0 +1,21 @@
+dist
+build
+cache
+node_modules
+.DS_Store
+.idea
+.vscode
+.cache
+.env
+.env.test
+*.tsbuildinfo
+.npm
+.eslintcache
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
