@@ -4,5 +4,8 @@
   "dependencies": {
     "@assemblyscript/loader": "^0.14.8",
     "lodash": "^4.17.20"
+  },
+  "peerDependencies": {
+    "electron": "^9.2.1"
   }
 }
