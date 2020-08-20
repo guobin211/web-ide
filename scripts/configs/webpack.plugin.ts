@@ -10,8 +10,7 @@ const { IS_DEV, PROJECT_NAME, PUBLIC_DIR } = projectEnv
 const webpackPlugin: (((this: Compiler, compiler: Compiler) => void) | WebpackPluginInstance)[] = [
   new WebpackBar({
     name: PROJECT_NAME,
-    // react 蓝
-    color: '#61dafb',
+    color: '#2fa1e0',
   }),
   new CleanWebpackPlugin(),
   new HtmlWebpackPlugin({

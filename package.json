@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "web ide",
   "scripts": {
-    "serve": "ts-node --files -P scripts/tsconfig.json scripts/start.ts --test",
+    "serve": "ts-node --files -P scripts/tsconfig.json scripts/start.ts",
     "start": "",
     "release": "",
     "build:electron": "",
