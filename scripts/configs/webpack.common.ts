@@ -2,10 +2,13 @@ import { Configuration, ModuleOptions } from 'webpack'
 import { loader as MiniCssExtractLoader } from 'mini-css-extract-plugin';
 import path from 'path'
 import projectEnv from '../utils/env'
+import webpackPlugin from './webpack.plugin'
+
+const { IS_DEV, ROOT_DIR, WEB_DIR, PROJECT_NAME, HMR_PATH } = projectEnv
 
 function getCssLoaders(importLoaders: number): Array<string | Record<string, unknown>> {
   return [
-    projectEnv.IS_DEV ? 'style-loader' : MiniCssExtractLoader,
+    IS_DEV ? 'style-loader' : MiniCssExtractLoader,
     {
       loader: 'css-loader',
       options: {
@@ -79,23 +82,29 @@ const webpackResolve = {
   // 不写后缀名
   extensions: ['.js', '.tsx', '.ts', '.json'],
   alias: {
-    '@': projectEnv.WEB_DIR,
+    '@': WEB_DIR,
   },
 }
 
 const common: Configuration = {
   cache: true,
-  context: projectEnv.ROOT_DIR,
-  entry: [path.resolve(projectEnv.WEB_DIR, "index.tsx")],
+  context: ROOT_DIR,
+  entry: ['react-hot-loader/patch', path.resolve(WEB_DIR, "index.tsx")],
   output: {
     publicPath: '/',
-    path: path.resolve(projectEnv.ROOT_DIR, 'dist'),
+    path: path.resolve(ROOT_DIR, 'dist'),
     filename: 'js/[name]-[hash].bundle.js',
-    hashSalt: projectEnv.PROJECT_NAME,
+    hashSalt: PROJECT_NAME,
   },
   resolve: webpackResolve,
   module: webpackModule,
-  plugins: []
+  plugins: webpackPlugin
+}
+
+if (IS_DEV) {
+  (common.entry as string[]).unshift(
+    `webpack-hot-middleware/client?path=${HMR_PATH}&reload=true&overlay=true`
+  )
 }
 
 export default common

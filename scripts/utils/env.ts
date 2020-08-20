@@ -30,6 +30,8 @@ interface ProjectEnv {
   PROJECT_NAME: string
   // 项目版本号
   APP_VERSION: string
+  // hot replace path
+  HMR_PATH: string
 }
 
 const IS_DEV = process.env.NODE_ENV !== 'production'
@@ -52,6 +54,7 @@ const projectEnv: ProjectEnv = {
   SCRIPTS_DIR,
   WASM_DIR,
   WORKER_DIR,
+  HMR_PATH: '/__webpack_hmr',
   PROJECT_NAME: json.name,
   APP_VERSION: json.version
 }
